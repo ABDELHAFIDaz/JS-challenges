@@ -1,9 +1,9 @@
 const workers = [
-    { id: 1, name: 'Alice Dupont', role: 'Manager', city: 'Paris', salary: 60000, active: true, hireDate: '2023-01-15' },
-    { id: 3, name: 'Claire Bernard', role: 'Designer', city: 'Paris', salary: 48000, active: false, hireDate: '2024-02-01' },
-    { id: 5, name: 'Eve Dubois', role: 'Manager', city: 'Marseille', salary: 62000, active: true, hireDate: '2020-03-05' },
-    { id: 2, name: 'Bob Martin', role: 'Developer', city: 'Lyon', salary: 55000, active: true, hireDate: '2022-06-10' },
-    { id: 4, name: 'David Leroy', role: 'Developer', city: 'Lyon', salary: 52000, active: true, hireDate: '2021-08-20' },
+    { id: 1, name: 'Alice Dupont', role: 'Manager', city: 'Paris', salary: 60000, active: false, hireDate: '2023-01-15' },
+    { id: 3, name: 'Claire Bernard', role: 'Designer', city: 'Paris', salary: 48000, active: true, hireDate: '2024-02-01' },
+    { id: 5, name: 'Eve Dubois', role: 'Manager', city: 'Marseille', salary: 62000, active: false, hireDate: '2020-03-05' },
+    { id: 2, name: 'Bob Martin', role: 'Developer', city: 'Lyon', salary: 55000, active: false, hireDate: '2022-06-10' },
+    { id: 4, name: 'David Leroy', role: 'Developer', city: 'Lyon', salary: 52000, active: false, hireDate: '2021-08-20' },
 ];
 
 let ID = workers.length;
@@ -163,7 +163,7 @@ let ID = workers.length;
 //     }
 //     else
 //         document.getElementById("worker-name").style.borderColor = "black";
-    
+
 //     if(!regex.test(document.getElementById("worker-role").value.trim())){
 //         isValid = false;
 //         document.getElementById("worker-role").style.borderColor = "red";
@@ -199,3 +199,100 @@ let ID = workers.length;
 //         hireDate: '2025-11-17'
 //     })
 // }
+
+// challenge 19 =================================================================================================================
+
+// function displayer() {
+//     document.querySelector('body').innerHTML = "";
+//     workers.forEach(ele => {
+//         document.querySelector('body').innerHTML += `
+//     <div>
+//         <span>${ele.name}</span>___________________<button class="btn">Delete</button>
+//     </div>
+//     <br>`;
+//     })
+//     deleteWorker();
+// }
+
+// function deleteWorker(){
+//     document.querySelectorAll('.btn').forEach(btn => {
+//         btn.addEventListener('click', (e) => {
+//             let targetName = btn.previousElementSibling.innerHTML;
+//             workers.forEach(worker => {
+//                 if (worker.name.includes(targetName))
+//                     workers.splice(workers.indexOf(worker), 1);
+//             })
+//             console.log(workers);
+//             displayer();
+//         })
+//     })
+// }
+
+// displayer();
+
+// challenge 20 =================================================================================================================
+
+// let workersnames = workers.map(worker => worker.name);
+// workersnames[0] = "hafidd"
+// console.log(workersnames);
+// console.log(workers);
+
+// let colonedArr = structuredClone(workers);
+// colonedArr[0].salary = 2;
+// colonedArr[0].name = "hafid";
+// console.log("coloned: ", colonedArr);
+// console.log("original: ", workers);
+
+// challenge 21 =================================================================================================================
+
+// workers.map(worker => worker.salary += worker.salary * 0.1);
+// console.log("after", workers);
+
+
+// challenge 22 =================================================================================================================
+
+// let paris = [];
+// workers.reduce((sum, n) => (n.city == "Paris")? paris.push(n): sum, 0);
+// console.log("paris: ", paris);
+
+// let lyon = [];
+// workers.reduce((sum, n) => (n.city == "Lyon")? lyon.push(n): sum, 0);
+// console.log("lyon: ", lyon);
+
+// let marseille = [];
+// workers.reduce((sum, n) => (n.city == "Marseille")? marseille.push(n): sum, 0);
+// console.log("marseille: ", marseille);
+
+// challenge 23 =================================================================================================================
+
+// if(workers.some(worker => !worker.active ))
+//     document.querySelector("body").innerHTML += "<br><br><br><br><h1>Some thing is wrong</h1>";
+
+// challenge 24 =================================================================================================================
+
+// if(workers.every(worker => worker.salary > 30000))
+//     document.querySelector("body").innerHTML = "<br><br><br><br><h1>✓ All employees earn more than $30,000</h1>";
+
+// challenge 25 =================================================================================================================
+
+// let coloned = structuredClone(workers)
+// coloned[0].salary = 70000;
+// console.log("cloned:", coloned[0])
+// console.log("original: ", workers[0])
+
+// challenge 26 =================================================================================================================
+
+// document.querySelector("body").innerHTML = `<input>`;
+// document.querySelector("body").innerHTML += `<div><div>`;
+// let dev = document.querySelector("div");
+// let input = document.querySelector("input");
+// console.log(dev)
+// input.addEventListener("input", (e) => {
+//     console.log(input.value)
+//     dev.innerHTML = "";
+//     workers.forEach(Worker => {
+//         if(Worker.name.includes(input.value) || Worker.role.includes(input.value)){
+//             dev.innerHTML += `${Worker.name} | ${Worker.role}<br>`;
+//         }
+//     })
+// })

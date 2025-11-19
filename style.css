@@ -65,3 +65,14 @@ input{
     border: 4px green solid;
     background-color: green;
 }
+
+.btn{
+    padding: 5px;
+    background-color: red;
+    border-radius: 7px;
+}
+
+h1{
+    background-color: rgba(0, 128, 0, 0.4);
+    padding: 10px;
+}
