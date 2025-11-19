@@ -219,11 +219,13 @@ let ID = workers.length;
 //         btn.addEventListener('click', (e) => {
 //             let targetName = btn.previousElementSibling.innerHTML;
 //             workers.forEach(worker => {
-//                 if (worker.name.includes(targetName))
+//                 if (worker.name.includes(targetName)){
 //                     workers.splice(workers.indexOf(worker), 1);
+//                     btn.parentElement.outerHTML = "";
+//                 }
 //             })
 //             console.log(workers);
-//             displayer();
+//             // displayer();
 //         })
 //     })
 // }
@@ -295,4 +297,119 @@ let ID = workers.length;
 //             dev.innerHTML += `${Worker.name} | ${Worker.role}<br>`;
 //         }
 //     })
+// })
+
+// challenge 27 =================================================================================================================
+
+// let selector = document.getElementById('roles-select');
+// let list = document.createElement("div");
+// document.querySelector("body").appendChild(list);
+
+// function printer(array) {
+//     list.innerHTML = "";
+//     array.forEach(ele => {
+//         list.innerHTML += `
+//                     <div>
+//                         ${ele.name} | ${ele.role}
+//                     </div>
+//                     <br>`;
+//     })
+// }
+// printer(workers);
+
+// selector.addEventListener("change", () => {
+//     console.log(selector.value);
+//     switch (selector.value) {
+//         case "All roles":
+//             printer(workers);
+//             break;
+//         default:
+//             let theOnes = workers.filter(worker => worker.role == selector.value);
+//             printer(theOnes);
+//     }
+// })
+
+// challenge 28 =================================================================================================================
+
+// let tbody = document.querySelector("tbody");
+// workers.forEach((worker, id) => {
+//     tbody.innerHTML += `
+//             <tr>
+//                 <td>${worker.id}</td>
+//                 <td>${worker.name}</td>
+//                 <td>${worker.role}</td>
+//                 <td>${worker.city}</td>
+//                 <td>$${worker.salary}</td>
+//             </tr>`
+// })
+
+// challenge 29 =================================================================================================================
+
+// function tableDisplayer() {
+//     let tbody = document.querySelector("tbody");
+//     tbody.innerHTML = "";
+//     workers.forEach((worker, id) => {
+//         tbody.innerHTML += `
+//             <tr>
+//                 <td>${worker.name}</td>
+//                 <td>${worker.role}</td>
+//                 <td>$${worker.salary}</td>
+//             </tr>`
+//     })
+// }
+// tableDisplayer();
+
+// document.querySelectorAll(".clickable-headers").forEach(hd => {
+//     hd.addEventListener('click', () => {
+//         console.log(hd.innerHTML)
+//         switch(hd.innerHTML){
+//             case "NAME":
+//                 workers.sort((a, b) => a.name.localeCompare(b.name))
+//                 tableDisplayer();
+//                 break;
+//             default:
+//                 workers.sort((a, b) => a.salary - b.salary)
+//                 tableDisplayer();
+//         }
+//     })
+// })
+
+// challenge 30 =================================================================================================================
+
+// let newHires = [
+//                 { id: 1, name: 'XXXXX xxxxx', role: 'Manager', city: 'Rabat', salary: 60000, active: false, hireDate: '2025-01-15' },
+//                 { id: 3, name: 'YYYYY yyyyy', role: 'Developer', city: 'Safi', salary: 48000, active: true, hireDate: '2025-02-01' }
+//             ]
+// let allWorkers = workers.concat(newHires) // concat merges two or more arrays and returns the result without effecting the original arrays
+// document.querySelector("body").innerHTML = `<p>original: ${workers.length} workers</p><p>New hires: ${newHires.length} workers</p><p>All workers:</p><ul></ul>`;
+// allWorkers.forEach(worker => document.querySelector("ul").innerHTML += `<li>${worker.name}</li>`);
+
+// challenge 31 =================================================================================================================
+
+// document.querySelector("body").innerHTML = "<button id='save-btn'>Save to local storage</button>";
+// document.querySelector("button").addEventListener('click', () => {
+//     localStorage.setItem("workers", JSON.stringify(workers));
+//     console.log(localStorage);
+// })
+
+// challenge 32 =================================================================================================================
+
+// localStorage.setItem("workers", JSON.stringify(workers)); // to store
+// document.querySelector("body").innerHTML = "<button id='save-btn'>Load from local storage</button>";
+// document.querySelector("button").addEventListener('click', () => {
+//     let fromStorage = JSON.parse(localStorage.getItem("workers")); // to load from localStorage
+//     console.log(fromStorage);
+// })
+
+// challenge 33 =================================================================================================================
+
+// document.querySelector("body").innerHTML = "<ul></ul>";
+// workers.reduce((sum, n) => document.querySelector("ul").innerHTML += `<li>${n.name} | ${n.role}</li>`, 0);
+
+// challenge 34 =================================================================================================================
+
+// document.querySelector("body").innerHTML = "<ul></ul>";
+// workers.forEach(worker => {
+//     let {name, city, salary} = worker;
+//     console.log(name + "--" + city + "--" + salary);
 // })
