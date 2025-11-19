@@ -386,7 +386,7 @@ let ID = workers.length;
 
 // challenge 31 =================================================================================================================
 
-// document.querySelector("body").innerHTML = "<button id='save-btn'>Save to local storage</button>";
+// document.querySelector("body").innerHTML = "<button class='save-btn'>Save to local storage</button>";
 // document.querySelector("button").addEventListener('click', () => {
 //     localStorage.setItem("workers", JSON.stringify(workers));
 //     console.log(localStorage);
@@ -395,7 +395,7 @@ let ID = workers.length;
 // challenge 32 =================================================================================================================
 
 // localStorage.setItem("workers", JSON.stringify(workers)); // to store
-// document.querySelector("body").innerHTML = "<button id='save-btn'>Load from local storage</button>";
+// document.querySelector("body").innerHTML = "<button class='save-btn'>Load from local storage</button>";
 // document.querySelector("button").addEventListener('click', () => {
 //     let fromStorage = JSON.parse(localStorage.getItem("workers")); // to load from localStorage
 //     console.log(fromStorage);
@@ -413,3 +413,65 @@ let ID = workers.length;
 //     let {name, city, salary} = worker;
 //     console.log(name + "--" + city + "--" + salary);
 // })
+
+
+// challenge 35 =================================================================================================================
+
+// Object.freeze(workers[0]);
+// // workers[0].salary = 3223;
+// // console.log(workers[0]);
+// document.querySelector('body').innerHTML = `<button class="save-btn">Try edit ${workers[0].name} name</button>`;
+// document.querySelector("button").addEventListener('click', () => {
+//     let userInput = prompt(`edit ${workers[0].name} name`);
+//     try {
+//         workers[0].name = userInput;
+//         throw new Error("You can not edit on this object (object has been frozen)");
+//     } catch (error) {
+//         console.error(error);
+//     }
+//     console.log("user input: ", userInput);
+//     console.log("original object: ", workers[0]);
+// })
+
+// challenge 36 =================================================================================================================
+
+// let unique = new Set(workers.map(worker => worker.city));
+// console.log("Unique cities: ");
+// unique.forEach(item => console.log(item));
+
+// challenge 37 =================================================================================================================
+
+// let after2024 = workers.filter(worker => worker.hireDate > "2024-01-01");
+// after2024.forEach(worker => console.log(worker.name + "-hired: " + worker.hireDate));
+
+// challenge 38 =================================================================================================================
+
+// document.getElementById('form').addEventListener("submit", (e) => {
+//     e.preventDefault();
+//     let salaryRegex = /^\d{1,5}$/;
+//     if(salaryRegex.test(document.getElementById("worker-salary").value.trim())){ // only to check the salary
+//         console.log('been here')
+//         workers.push({
+//             id: ++ID,
+//             name: document.getElementById("worker-name").value,
+//             role: document.getElementById("worker-role").value,
+//             city: "rabat",
+//             salary: document.getElementById("worker-salary").value
+//         })
+//         document.getElementById("form").reset();
+//     }
+//     else
+//         console.error("invalide salary!");
+//     console.log("original array: ", workers);
+// })
+
+// challenge 39 =================================================================================================================
+
+// let newArr = workers.toSpliced(workers.indexOf(workers.find(worker => worker.name == "Claire Bernard")), 1);
+// console.log("new array: ", newArr);
+// console.log("original: ", workers);
+
+// challenge 40 =================================================================================================================
+
+// let chained = workers.filter(worker => worker.role == "Manager").map(worker => {return {name: worker.name, salary: worker.salary}}).sort((a, b) => a.name.localeCompare(b.name));
+// console.log(chained);

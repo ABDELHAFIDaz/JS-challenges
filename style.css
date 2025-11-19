@@ -82,7 +82,7 @@ h1{
     border-radius: 5px;
 }
 
-#save-btn:hover{
+.save-btn:hover{
     background-color: greenyellow;
     border-radius: 8px;
     padding: 6px;
