@@ -111,13 +111,14 @@ let ID = workers.length;
 
 // challenge 13 =================================================================================================================
 
-// workers.forEach(ele => document.querySelector("body").innerHTML += `<div><span>${ele.name}</span> (click to see index)</div><br><br>`);
-// document.querySelectorAll("div").forEach(box => {
-//     box.addEventListener('click', () => {
-//         let target = workers.find(e => e.name == box.firstElementChild.innerHTML);
-//         alert(`${box.firstElementChild.innerHTML} is at index ${workers.indexOf(target)}`);
-//     })
-// });
+workers.forEach(ele => document.querySelector("body").innerHTML += `<div data-id="${ele.id}"><span>${ele.name}</span> (click to see index)</div><br><br>`);
+document.querySelectorAll("div").forEach(box => {
+    box.addEventListener('click', () => {
+        let targetName = box.firstElementChild.innerHTML;
+        let targetIndex = workers.findIndex(worker => worker.id == box.dataset.id);
+        alert(`${targetName} is at index ${targetIndex}`);
+    })
+});
 
 // challenge 14 =================================================================================================================
 
