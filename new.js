@@ -98,8 +98,8 @@ let ID = workers.length;
 
 // challenge 11 =================================================================================================================
 
-// let array = workers.forEach(e => {
-//     let obj = {...{name: e.name, salray:e.salary}}
+// let array = workers.map(e => {
+//     let obj = {name: e.name, salary: e.salary};
 //     return obj;
 // });
 // console.log(array);
@@ -111,14 +111,14 @@ let ID = workers.length;
 
 // challenge 13 =================================================================================================================
 
-workers.forEach(ele => document.querySelector("body").innerHTML += `<div data-id="${ele.id}"><span>${ele.name}</span> (click to see index)</div><br><br>`);
-document.querySelectorAll("div").forEach(box => {
-    box.addEventListener('click', () => {
-        let targetName = box.firstElementChild.innerHTML;
-        let targetIndex = workers.findIndex(worker => worker.id == box.dataset.id);
-        alert(`${targetName} is at index ${targetIndex}`);
-    })
-});
+// workers.forEach(ele => document.querySelector("body").innerHTML += `<div data-id="${ele.id}"><span>${ele.name}</span> (click to see index)</div><br><br>`);
+// document.querySelectorAll("div").forEach(box => {
+//     box.addEventListener('click', () => {
+//         let targetName = box.firstElementChild.innerHTML;
+//         let targetIndex = workers.findIndex(worker => worker.id == box.dataset.id);
+//         alert(`${targetName} is at index ${targetIndex}`);
+//     })
+// });
 
 // challenge 14 =================================================================================================================
 
@@ -127,7 +127,7 @@ document.querySelectorAll("div").forEach(box => {
 
 // challenge 15 =================================================================================================================
 
-// console.log("Before sorting: ", workers); // ????? why is sorted even before the sort function
+// console.log("Before sorting: ", [...workers]); // cloned here because the original is sorted 
 // workers.sort((a, b) => a.name.localeCompare(b.name)); // localeCompare for comparing strings
 // console.log("After sorting: ", workers);
 
@@ -207,40 +207,29 @@ document.querySelectorAll("div").forEach(box => {
 //     document.querySelector('body').innerHTML = "";
 //     workers.forEach(ele => {
 //         document.querySelector('body').innerHTML += `
-//     <div>
-//         <span>${ele.name}</span>___________________<button class="btn">Delete</button>
+//     <div data-id="${ele.id}">
+//         <span>${ele.name}</span>___________________<button class="btn" onclick="deleteWorker(this)">Delete</button>
 //     </div>
 //     <br>`;
 //     })
-//     deleteWorker();
 // }
 
-// function deleteWorker(){
-//     document.querySelectorAll('.btn').forEach(btn => {
-//         btn.addEventListener('click', (e) => {
-//             let targetName = btn.previousElementSibling.innerHTML;
-//             workers.forEach(worker => {
-//                 if (worker.name.includes(targetName)){
-//                     workers.splice(workers.indexOf(worker), 1);
-//                     btn.parentElement.outerHTML = "";
-//                 }
-//             })
-//             console.log(workers);
-//             // displayer();
-//         })
-//     })
+// function deleteWorker(element) {
+//     let targetId = element.parentElement.dataset.id;
+//     workers.splice(workers.findIndex(worker => targetId == worker.id), 1);
+//     element.parentElement.outerHTML = "";
+//     console.table(workers);
 // }
 
 // displayer();
 
 // challenge 20 =================================================================================================================
 
-// let workersnames = workers.map(worker => worker.name);
-// workersnames[0] = "hafidd"
-// console.log(workersnames);
-// console.log(workers);
-
-// let colonedArr = structuredClone(workers);
+// let colonedArr = [];
+// workers.forEach(worker => {
+//     let obj = {...worker}
+//     colonedArr.push(obj);
+// })
 // colonedArr[0].salary = 2;
 // colonedArr[0].name = "hafid";
 // console.log("coloned: ", colonedArr);
@@ -254,17 +243,14 @@ document.querySelectorAll("div").forEach(box => {
 
 // challenge 22 =================================================================================================================
 
-// let paris = [];
-// workers.reduce((sum, n) => (n.city == "Paris")? paris.push(n): sum, 0);
-// console.log("paris: ", paris);
+// let grouped = workers.reduce((acc, worker) => {
+//     if(!acc[worker.city])
+//         acc[worker.city] = [];
 
-// let lyon = [];
-// workers.reduce((sum, n) => (n.city == "Lyon")? lyon.push(n): sum, 0);
-// console.log("lyon: ", lyon);
-
-// let marseille = [];
-// workers.reduce((sum, n) => (n.city == "Marseille")? marseille.push(n): sum, 0);
-// console.log("marseille: ", marseille);
+//     acc[worker.city].push(worker.name);
+//     return acc;
+// }, {})
+// console.log(grouped);
 
 // challenge 23 =================================================================================================================
 
