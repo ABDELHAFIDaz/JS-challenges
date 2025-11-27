@@ -295,17 +295,16 @@ let ID = workers.length;
 // function printer(array) {
 //     list.innerHTML = "";
 //     array.forEach(ele => {
-//         list.innerHTML += `
-//                     <div>
+//         list.insertAdjacentHTML('beforeend',  `
+//                     <p>
 //                         ${ele.name} | ${ele.role}
-//                     </div>
-//                     <br>`;
+//                     </p>
+//                     <br>`);
 //     })
 // }
 // printer(workers);
 
 // selector.addEventListener("change", () => {
-//     console.log(selector.value);
 //     switch (selector.value) {
 //         case "All roles":
 //             printer(workers);
@@ -319,15 +318,15 @@ let ID = workers.length;
 // challenge 28 =================================================================================================================
 
 // let tbody = document.querySelector("tbody");
-// workers.forEach((worker, id) => {
-//     tbody.innerHTML += `
+// workers.forEach(worker => {
+//     tbody.insertAdjacentHTML('beforeend',  `
 //             <tr>
 //                 <td>${worker.id}</td>
 //                 <td>${worker.name}</td>
 //                 <td>${worker.role}</td>
 //                 <td>${worker.city}</td>
 //                 <td>$${worker.salary}</td>
-//             </tr>`
+//             </tr>`);
 // })
 
 // challenge 29 =================================================================================================================
@@ -391,11 +390,17 @@ let ID = workers.length;
 // challenge 33 =================================================================================================================
 
 // document.querySelector("body").innerHTML = "<ul></ul>";
-// workers.reduce((sum, n) => document.querySelector("ul").innerHTML += `<li>${n.name} | ${n.role}</li>`, 0);
+// let list = document.querySelector('ul');
+
+// let listContent = workers.reduce((acc, n) => {
+//    acc += `<li>${n.name} | ${n.role}</li>`;
+//    return acc;
+// }, "");
+
+// list.innerHTML = listContent;
 
 // challenge 34 =================================================================================================================
 
-// document.querySelector("body").innerHTML = "<ul></ul>";
 // workers.forEach(worker => {
 //     let {name, city, salary} = worker;
 //     console.log(name + "--" + city + "--" + salary);
@@ -405,8 +410,6 @@ let ID = workers.length;
 // challenge 35 =================================================================================================================
 
 // Object.freeze(workers[0]);
-// // workers[0].salary = 3223;
-// // console.log(workers[0]);
 // document.querySelector('body').innerHTML = `<button class="save-btn">Try edit ${workers[0].name} name</button>`;
 // document.querySelector("button").addEventListener('click', () => {
 //     let userInput = prompt(`edit ${workers[0].name} name`);
@@ -454,7 +457,7 @@ let ID = workers.length;
 
 // challenge 39 =================================================================================================================
 
-// let newArr = workers.toSpliced(workers.indexOf(workers.find(worker => worker.name == "Claire Bernard")), 1);
+// let newArr = workers.toSpliced(workers.findIndex(worker => worker.name == "Claire Bernard"), 1);
 // console.log("new array: ", newArr);
 // console.log("original: ", workers);
 
