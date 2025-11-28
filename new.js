@@ -401,8 +401,7 @@ let ID = workers.length;
 
 // challenge 34 =================================================================================================================
 
-// workers.forEach(worker => {
-//     let {name, city, salary} = worker;
+// workers.forEach(({name, city, salary}) => {
 //     console.log(name + "--" + city + "--" + salary);
 // })
 
